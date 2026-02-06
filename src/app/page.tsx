@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import TerminalIntro from "../components/TerminalIntro";
 import { useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const projects = [
   {
@@ -60,7 +61,7 @@ export default function Home() {
                 My Portfolio
               </motion.h1>
 
-              <div className="space-x-6 md:space-x-10 text-sm text-blue-200">
+              <div className="space-x-4 md:space-x-10 text-sm text-blue-200">
                 <a href="#projects" className="hover:text-white transition">Projects</a>
                 <a href="#skills" className="hover:text-white transition">Skills</a>
                 <a href="#contact" className="hover:text-white transition">Contact</a>
@@ -70,7 +71,7 @@ export default function Home() {
           </nav>
 
           {/* HERO */}
-          <section className="relative text-center py-36 px-6 overflow-hidden">
+          <section className="relative text-center py-28 md:py-36 px-6 overflow-hidden">
 
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-blue-600/20 blur-[160px] rounded-full" />
 
@@ -194,12 +195,34 @@ export default function Home() {
                 Open to collaboration, internships, and project discussions.
               </p>
 
+              {/* Email Button */}
               <a
                 href="mailto:volapurohan@gmail.com"
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold hover:scale-105 transition inline-block"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold hover:scale-105 transition inline-block mb-10"
               >
                 Email Me
               </a>
+
+              {/* Social Links */}
+              <div className="flex justify-center gap-8 text-3xl text-blue-300">
+
+                <a
+                  href="https://github.com/thegitguy-56"
+                  target="_blank"
+                  className="hover:text-white hover:scale-110 transition"
+                >
+                  <FaGithub />
+                </a>
+
+                <a
+                  href="https://linkedin.com/in/rohanvolapu"
+                  target="_blank"
+                  className="hover:text-white hover:scale-110 transition"
+                >
+                  <FaLinkedin />
+                </a>
+
+              </div>
 
             </div>
           </section>
