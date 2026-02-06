@@ -58,7 +58,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               className="text-xl font-semibold tracking-wider text-blue-300"
             >
-              vrohan.xyz
+              My Portfolio
             </motion.h1>
 
             <div className="space-x-8 text-sm text-blue-200">
