@@ -139,7 +139,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 80 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.2 }}
-                    className="p-8 rounded-3xl bg-blue-900/10 border border-blue-800/30 backdrop-blur-xl hover:bg-blue-800/20 transition"
+                    className="p-8 rounded-3xl bg-blue-900/10 border border-blue-800/30 backdrop-blur-xl hover:bg-blue-800/20 transition hover:shadow-[0_0_40px_rgba(59,130,246,0.25)]"
                   >
                     <h3 className="text-xl md:text-2xl font-semibold mb-4 text-blue-200">
                       {project.title}
@@ -198,7 +198,7 @@ export default function Home() {
               {/* Email Button */}
               <a
                 href="mailto:volapurohan@gmail.com"
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold hover:scale-105 transition inline-block mb-10"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold transition transform hover:scale-105 hover:shadow-[0_0_25px_rgba(34,211,238,0.6)] inline-block mb-10"
               >
                 Email Me
               </a>
@@ -209,7 +209,7 @@ export default function Home() {
                 <a
                   href="https://github.com/thegitguy-56"
                   target="_blank"
-                  className="hover:text-white hover:scale-110 transition"
+                  className="hover:text-white transition transform hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(34,211,238,0.9)]"
                 >
                   <FaGithub />
                 </a>
@@ -217,7 +217,7 @@ export default function Home() {
                 <a
                   href="https://linkedin.com/in/rohanvolapu"
                   target="_blank"
-                  className="hover:text-white hover:scale-110 transition"
+                  className="hover:text-white transition transform hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(34,211,238,0.9)]"
                 >
                   <FaLinkedin />
                 </a>
