@@ -215,7 +215,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://drive.google.com/drive/folders/1STHU11TWbKd5EQQ3eZQpcVTcM4oIBfN1?usp=drive_link"
+                  href="https://www.linkedin.com/in/rohanvolapu"
                   target="_blank"
                   className="hover:text-white transition transform hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(34,211,238,0.9)]"
                 >
