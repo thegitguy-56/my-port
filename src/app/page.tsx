@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa";
+import { useMemo, useState } from "react";
+import { FaArrowRight, FaGithub, FaLinkedin, FaLocationArrow, FaRegStar } from "react-icons/fa";
 import TerminalIntro from "../components/TerminalIntro";
 
 type Project = {
@@ -25,7 +25,7 @@ const projects: Project[] = [
     highlight: "Built trust-first verification workflow for false-claim reduction.",
     demoUrl: "#",
     repoUrl: "#",
-    accent: "from-cyan-400/50 to-blue-500/50",
+    accent: "from-cyan-400/55 via-blue-500/60 to-indigo-500/60",
   },
   {
     title: "Energy Consumption ML Forecasting",
@@ -35,7 +35,7 @@ const projects: Project[] = [
     highlight: "Created forecasting views usable by both technical and non-technical users.",
     demoUrl: "#",
     repoUrl: "#",
-    accent: "from-fuchsia-400/50 to-indigo-500/50",
+    accent: "from-fuchsia-400/55 via-violet-500/60 to-indigo-500/60",
   },
   {
     title: "Project Management Web App",
@@ -45,7 +45,7 @@ const projects: Project[] = [
     highlight: "Implemented role-aware actions to keep teams aligned on delivery.",
     demoUrl: "#",
     repoUrl: "#",
-    accent: "from-emerald-400/50 to-teal-500/50",
+    accent: "from-emerald-400/55 via-teal-500/60 to-cyan-500/60",
   },
 ];
 
@@ -68,6 +68,12 @@ const skills = [
   },
 ];
 
+const stats = [
+  { label: "Products shipped", value: "12+" },
+  { label: "Avg. UX lift", value: "38%" },
+  { label: "Cloud workflows", value: "20+" },
+];
+
 export default function Home() {
   const [showIntro, setShowIntro] = useState(() => {
     if (typeof window === "undefined") {
@@ -80,6 +86,8 @@ export default function Home() {
     return !reduceMotion && !introSeen;
   });
 
+  const statusText = useMemo(() => "Available for internships & selective freelance projects", []);
+
   const handleIntroComplete = () => {
     window.localStorage.setItem("portfolio_intro_seen", "true");
     setShowIntro(false);
@@ -91,132 +99,137 @@ export default function Home() {
 
       {!showIntro && (
         <main className="min-h-screen bg-brand-night text-white">
-          <nav className="border-b border-white/10 backdrop-blur-xl sticky top-0 z-40 bg-[#040917]/85">
-            <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+          <nav className="sticky top-0 z-40 border-b border-white/10 bg-[#040917]/70 backdrop-blur-2xl">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
               <motion.h1
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -18 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-lg md:text-xl font-semibold tracking-wide text-cyan-200"
+                className="text-lg font-semibold tracking-wide text-cyan-100 md:text-xl"
               >
                 Rohan // Product Engineer
               </motion.h1>
 
-              <div className="space-x-4 md:space-x-10 text-sm text-slate-200">
-                <a href="#projects" className="hover:text-cyan-300 transition">
+              <div className="hidden items-center gap-8 text-sm text-slate-200 sm:flex">
+                <a href="#projects" className="nav-link">
                   Projects
                 </a>
-                <a href="#skills" className="hover:text-cyan-300 transition">
+                <a href="#skills" className="nav-link">
                   Skills
                 </a>
-                <a href="#contact" className="hover:text-cyan-300 transition">
+                <a href="#contact" className="nav-link">
                   Contact
                 </a>
               </div>
             </div>
           </nav>
 
-          <section className="relative text-center py-24 md:py-32 px-6 overflow-hidden section-grid">
-            <div className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-cyan-500/20 blur-[170px] rounded-full" />
+          <section className="section-grid relative overflow-hidden px-6 py-24 text-center md:py-30">
+            <div className="hero-aura hero-aura-left" />
+            <div className="hero-aura hero-aura-right" />
 
-            <div className="relative max-w-5xl mx-auto">
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-xs uppercase tracking-[0.35em] text-cyan-300/80 mb-5"
+            <div className="relative mx-auto max-w-5xl">
+              <motion.span
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="chip mx-auto mb-7 inline-flex"
               >
-                Engineering Human-Centered Systems
-              </motion.p>
+                <FaRegStar className="text-[10px]" />
+                {statusText}
+              </motion.span>
 
               <motion.h1
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-cyan-200 via-blue-200 to-fuchsia-200 bg-clip-text text-transparent"
+                className="mb-8 text-5xl font-bold text-balance md:text-7xl"
               >
-                I design software that feels cinematic and performs like infrastructure.
+                <span className="text-gradient">Sleek interfaces.</span> Smart systems. <br />
+                Delightful digital products.
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.25 }}
-                className="text-base md:text-xl text-slate-200/95 leading-relaxed max-w-3xl mx-auto"
+                className="mx-auto max-w-3xl text-base leading-relaxed text-slate-200/95 md:text-xl"
               >
-                I build mobile-first products, ML-backed experiences, and cloud systems that turn complex workflows into simple, addictive interactions.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="text-cyan-200/90 mt-5 text-sm md:text-base"
-              >
-                Currently obsessed with AI-assisted products that are fast, reliable, and emotionally memorable.
+                I build mobile-first products, ML-backed experiences, and cloud systems that transform complex operations into polished, high-conversion user journeys.
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55 }}
+                transition={{ delay: 0.45 }}
                 className="mt-11 flex flex-wrap justify-center gap-4"
               >
                 <a href="#projects" className="btn-primary">
-                  Explore Work
+                  Explore Work <FaArrowRight className="text-xs" />
                 </a>
-
                 <a href="#contact" className="btn-secondary">
                   Let&apos;s Build Together
                 </a>
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.65 }}
+                className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3"
+              >
+                {stats.map((stat) => (
+                  <div key={stat.label} className="glass-card rounded-2xl p-5 text-left">
+                    <p className="text-3xl font-semibold text-cyan-100">{stat.value}</p>
+                    <p className="mt-2 text-sm text-slate-300">{stat.label}</p>
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </section>
 
-          <section id="projects" className="py-24 px-6 section-contrast border-y border-white/10">
-            <div className="max-w-7xl mx-auto">
+          <section id="projects" className="section-contrast border-y border-white/10 px-6 py-24">
+            <div className="mx-auto max-w-7xl">
               <motion.h2
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-semibold mb-5 text-center text-cyan-100"
+                className="mb-5 text-center text-3xl font-semibold text-cyan-100 md:text-4xl"
               >
                 Project Stories, Not Just Screenshots
               </motion.h2>
-              <p className="text-center text-slate-300 mb-14 max-w-2xl mx-auto">
-                Each build below focuses on one thing: combining technical depth with an experience people actually remember.
+              <p className="mx-auto mb-14 max-w-2xl text-center text-slate-300">
+                Every project below is designed for performance + clarity, with modern UI patterns that keep users engaged and confident.
               </p>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid gap-8 md:grid-cols-3">
                 {projects.map((project, index) => (
                   <motion.article
                     key={project.title}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -8 }}
                     transition={{ delay: index * 0.12 }}
-                    className="group rounded-3xl border border-white/10 bg-[#090f24] p-7 relative overflow-hidden"
+                    className="group glass-card relative overflow-hidden rounded-3xl border border-white/10 p-7"
                   >
                     <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${project.accent}`} />
 
-                    <h3 className="text-xl font-semibold mb-3 text-cyan-100">{project.title}</h3>
-                    <p className="text-slate-300 text-sm leading-relaxed mb-4">{project.desc}</p>
-                    <p className="text-cyan-200/90 text-sm mb-5">{project.impact}</p>
+                    <h3 className="mb-3 text-xl font-semibold text-cyan-100">{project.title}</h3>
+                    <p className="mb-4 text-sm leading-relaxed text-slate-300">{project.desc}</p>
+                    <p className="mb-5 text-sm text-cyan-200/90">{project.impact}</p>
 
-                    <div className="flex flex-wrap gap-2 mb-5">
+                    <div className="mb-5 flex flex-wrap gap-2">
                       {project.stack.map((item) => (
-                        <span
-                          key={item}
-                          className="text-xs px-3 py-1 rounded-full border border-cyan-200/25 text-cyan-100/90"
-                        >
+                        <span key={item} className="rounded-full border border-cyan-200/25 bg-cyan-100/5 px-3 py-1 text-xs text-cyan-100/90">
                           {item}
                         </span>
                       ))}
                     </div>
 
-                    <p className="text-sm text-slate-400 group-hover:text-slate-200 transition mb-6">{project.highlight}</p>
+                    <p className="mb-6 text-sm text-slate-400 transition group-hover:text-slate-200">{project.highlight}</p>
 
                     <div className="flex items-center gap-4 text-sm">
-                      <a href={project.demoUrl} className="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200 transition">
+                      <a href={project.demoUrl} className="inline-flex items-center gap-2 text-cyan-300 transition hover:text-cyan-100">
                         Live Demo <FaArrowRight className="text-xs" />
                       </a>
-                      <a href={project.repoUrl} className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition">
+                      <a href={project.repoUrl} className="inline-flex items-center gap-2 text-slate-300 transition hover:text-white">
                         Code <FaArrowRight className="text-xs" />
                       </a>
                     </div>
@@ -226,38 +239,37 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="skills" className="py-24 px-6">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-semibold mb-14 text-center text-cyan-100">Technical Stack</h2>
+          <section id="skills" className="px-6 py-24">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="mb-14 text-center text-3xl font-semibold text-cyan-100 md:text-4xl">Technical Stack</h2>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+              <div className="grid gap-8 text-center md:grid-cols-2 lg:grid-cols-4">
                 {skills.map((skill, i) => (
                   <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    key={skill.title}
+                    initial={{ opacity: 0, scale: 0.94 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: i * 0.14 }}
-                    className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                    transition={{ delay: i * 0.12 }}
+                    whileHover={{ scale: 1.03 }}
+                    className="glass-card rounded-2xl border border-white/10 p-6"
                   >
-                    <h3 className="text-lg font-semibold mb-3 text-cyan-300">{skill.title}</h3>
-                    <p className="text-slate-300 text-sm leading-relaxed">{skill.items}</p>
+                    <h3 className="mb-3 text-lg font-semibold text-cyan-300">{skill.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-300">{skill.items}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
           </section>
 
-          <section id="contact" className="py-24 px-6 section-contrast border-t border-white/10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-cyan-100">Let&apos;s create your next wow moment.</h2>
+          <section id="contact" className="section-contrast border-t border-white/10 px-6 py-24">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="mb-6 text-3xl font-semibold text-cyan-100 md:text-4xl">Let&apos;s create your next wow moment.</h2>
 
-              <p className="text-slate-200 mb-3">
-                Open to internships, product collaborations, and ambitious engineering projects.
-              </p>
-              <p className="text-cyan-200/85 mb-10 text-sm">Average response time: within 24 hours.</p>
+              <p className="mb-3 text-slate-200">Open to internships, product collaborations, and ambitious engineering projects.</p>
+              <p className="mb-10 text-sm text-cyan-200/85">Average response time: within 24 hours.</p>
 
-              <a href="mailto:volapurohan@gmail.com" className="btn-primary inline-block mb-6">
-                Email Me
+              <a href="mailto:volapurohan@gmail.com" className="btn-primary mx-auto mb-6 inline-flex">
+                Email Me <FaLocationArrow className="text-xs" />
               </a>
 
               <div>
@@ -265,19 +277,19 @@ export default function Home() {
                   href="https://drive.google.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-slate-300 hover:text-white underline underline-offset-4"
+                  className="text-sm text-slate-300 underline underline-offset-4 hover:text-white"
                 >
                   View Resume
                 </a>
               </div>
 
-              <div className="flex justify-center gap-8 text-3xl text-cyan-300 mt-10">
+              <div className="mt-10 flex justify-center gap-8 text-3xl text-cyan-300">
                 <a
                   href="https://github.com/thegitguy-56"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open GitHub profile"
-                  className="hover:text-white transition transform hover:scale-110"
+                  className="transition hover:scale-110 hover:text-white"
                 >
                   <FaGithub />
                 </a>
@@ -287,7 +299,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open LinkedIn profile"
-                  className="hover:text-white transition transform hover:scale-110"
+                  className="transition hover:scale-110 hover:text-white"
                 >
                   <FaLinkedin />
                 </a>
@@ -295,7 +307,7 @@ export default function Home() {
             </div>
           </section>
 
-          <footer className="text-center py-12 text-slate-400 border-t border-white/10">© 2026 Rohan V — vrohan.xyz</footer>
+          <footer className="border-t border-white/10 py-12 text-center text-slate-400">© 2026 Rohan V — vrohan.xyz</footer>
         </main>
       )}
     </>
